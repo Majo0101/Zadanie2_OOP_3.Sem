@@ -1,19 +1,22 @@
-import java.util.InputMismatchException;
-import java.util.Scanner;
+public class Program extends FileSave {
 
-public class Program {
-
-    public Program() {
+    public Program(){
     }
 
-
-
-
-    public void menu(){
-
-
+    public void showTask(){
+//        Vypis prvu ulohu alebo chybu zoznam je prazdny
     }
 
+    public void processed(){
+//      Spracuj ulohu
+    }
 
+    public void postponed(){
+//        odloz ulohu
+    }
+
+    public void canceled(){
+//        zamietnut ulohu
+    }
 
 }
