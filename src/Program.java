@@ -3,8 +3,12 @@ public class Program extends FileSave {
     public Program(){
     }
 
-    public void showTask(){
-//        Vypis prvu ulohu alebo chybu zoznam je prazdny
+    public TaskData showTask(){
+        if (dataRaw.size() != 0){
+            return dataRaw.get(0);
+        }else{
+            return null;
+        }
     }
 
     public void processed(){
@@ -17,6 +21,10 @@ public class Program extends FileSave {
 
     public void canceled(){
 //        zamietnut ulohu
+    }
+
+    public void refused(){
+
     }
 
 }

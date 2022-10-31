@@ -1,3 +1,5 @@
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -16,7 +18,7 @@ public class FileRead {
 //        vymysliet triedenie podla priority a datumu v stacku
     }
 
-    public void readFile(String fileName){
+    public String readFile(String fileName){
         try{
             this.fileR = new FileReader(fileName);
             this.buffR = new BufferedReader(fileR);
@@ -28,13 +30,16 @@ public class FileRead {
 
 
 //                bezpecne naladovat data do objektu
-                dataRaw.add(new TaskData(lineArr[0], lineArr[1], lineArr[2], false, false));
+                dataRaw.add(new TaskData(lineArr[0], lineArr[2], lineArr[1], true, true));
 
                 line = buffR.readLine();
             }
-        } catch(Exception e) {
-            System.out.println("Nepodarilo sa nacitat subor");
+        } catch(FileNotFoundException e) {
+            return "File not found";
+        } catch (Exception e){
+            return "Error while reading";
         }
+        return "File was read";
     }
 
     public ArrayList<TaskData> getDataRaw() {
