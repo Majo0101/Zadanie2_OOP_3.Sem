@@ -1,9 +1,12 @@
 public class Loading {
 
-    public Loading() {}
+    private final StringBuilder loadBar;
+    private final StringBuilder saveBar;
 
-    private final StringBuilder loadBar = new StringBuilder("[          ]");
-    private final StringBuilder saveBar = new StringBuilder("[          ]");
+    public Loading() {
+        this.loadBar = new StringBuilder("[          ]");
+        this.saveBar = new StringBuilder("[          ]");
+    }
 
     public int loadingBar(int i){
         if (i <= 100){
