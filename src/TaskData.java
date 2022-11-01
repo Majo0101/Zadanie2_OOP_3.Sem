@@ -8,7 +8,8 @@ public class TaskData {
     String status;
     boolean type;
     boolean priority;
-    Date date;
+    Date dateOpen;
+    Date dateClose;
 
     public TaskData(String dateStr, String description, String status,boolean type,boolean priority){
         this.description = description;
@@ -18,7 +19,7 @@ public class TaskData {
 
         try{
             SimpleDateFormat formatter=new SimpleDateFormat("HH:mm-dd/MM/yyyy");
-            date = formatter.parse(dateStr);
+            dateOpen = formatter.parse(dateStr);
         } catch (ParseException e) {
             System.out.println("Broken data !");
         }
@@ -36,8 +37,20 @@ public class TaskData {
         return priority;
     }
 
-    public Date getDate() {
-        return date;
+    public boolean isType() {
+        return type;
+    }
+
+    public Date getDateOpen() {
+        return dateOpen;
+    }
+
+    public Date getDateClose() {
+        return dateClose;
+    }
+
+    public void setDateClose(Date dateClose) {
+        this.dateClose = dateClose;
     }
 
     public void setStatus(String status) {

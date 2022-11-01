@@ -1,14 +1,11 @@
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.io.BufferedReader;
 import java.io.FileReader;
 
 public class FileRead {
 
-    ArrayList<TaskData> dataRaw;
-    BufferedReader buffR;
-    FileReader fileR;
+    private final ArrayList<TaskData> dataRaw;
 
     public FileRead() {
         this.dataRaw = new ArrayList<TaskData>();
@@ -20,8 +17,8 @@ public class FileRead {
 
     public String readFile(String fileName){
         try{
-            this.fileR = new FileReader(fileName);
-            this.buffR = new BufferedReader(fileR);
+            FileReader fileR = new FileReader(fileName);
+            BufferedReader buffR = new BufferedReader(fileR);
 
             String line = buffR.readLine();
 
@@ -30,7 +27,7 @@ public class FileRead {
 
 
 //                bezpecne naladovat data do objektu
-                dataRaw.add(new TaskData(lineArr[0], lineArr[2], lineArr[1], true, true));
+                dataRaw.add(new TaskData(lineArr[0], lineArr[2], lineArr[1], false, true));
 
                 line = buffR.readLine();
             }
