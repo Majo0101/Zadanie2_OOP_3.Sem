@@ -4,28 +4,33 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 public class FileSave extends FileRead{
+//    TODO Object - Inheritance from FileRead - Save data to files separately by Completed and Uncompleted tasks
 
     private final ArrayList<TaskData> dataProcessed;
     private FileWriter completedTask;
     private FileWriter uncompletedTask;
 
     public FileSave(){
+//        TODO Constructor - FileSave
         this.dataProcessed = new ArrayList<TaskData>();
 
         try {
-            this.completedTask = new FileWriter("Completed_Tasks.csv",true);
+            this.completedTask = new FileWriter("Completed_Tasks.csv", true);
         }catch (IOException e){
             e.printStackTrace();
         }
+//        Create file Completed tasks file with writing to the end
 
         try{
-            this.uncompletedTask = new FileWriter("Uncompleted_Tasks.csv", true);
+            this.uncompletedTask = new FileWriter("Uncompleted_Tasks.csv");
         }catch (IOException e){
             e.printStackTrace();
         }
+//        Create file Uncompleted tasks with overwriting old data
     }
 
     public void fileSave(){
+//        TODO Function - Save data to file - Processed data do Completed, Raw to uncompleted
         String tmpDateIn;
         String tmpDateOut;
         SimpleDateFormat dateCreated =new SimpleDateFormat("HH:mm-dd/MM/yyyy");
@@ -52,6 +57,7 @@ public class FileSave extends FileRead{
                 e.printStackTrace();
             }
         }
+//        Parse completed task to file with processing date
 
         if (getDataRaw().size() != 0){
             for (TaskData i : getDataRaw()){
@@ -73,6 +79,7 @@ public class FileSave extends FileRead{
                 }
             }
         }
+//        Parse Uncompleted task to file
 
         try{
             completedTask.close();
@@ -88,8 +95,10 @@ public class FileSave extends FileRead{
 
         dataProcessed.clear();
         getDataRaw().clear();
+//        Clear stacks
     }
 
+//    Getters
     public ArrayList<TaskData> getDataProcessed() {
         return dataProcessed;
     }
